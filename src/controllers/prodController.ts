@@ -3,6 +3,12 @@ import prodService from '../services/prodService';
 
 const BAD_REQUEST = 400;
 const CREATED = 201;
+const OK = 200;
+
+const getAll = async (_request: Request, response: Response) => {
+  const products = await prodService.getAll();
+  response.status(OK).json(products);
+};
 
 const create = async (request: Request, response: Response) => {
   const product = request.body;
@@ -16,4 +22,5 @@ const create = async (request: Request, response: Response) => {
 
 export default {
   create,
+  getAll,
 };
